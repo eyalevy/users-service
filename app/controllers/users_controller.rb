@@ -20,8 +20,8 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    user_id = params.fetch(:id)
-    @user = User.find(params[:id])
+    user_id = params[:id]
+    @user = User.find(user_id)
   end
 
 end
