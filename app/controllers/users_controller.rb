@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :set_user, only: %w[get update]
 
   def index
     render :json => User.all
   end
 
   def get
-    user = User.find(params[:id])
-    render :json => user unless not user.errors
+    render :json => @user unless not @user.errors
   end
 
   def create
@@ -25,6 +25,9 @@ class UsersController < ApplicationController
 
   def sign_out
     render :json => User.all
+  def set_user
+    user_id = params.fetch(:id)
+    @user = User.find(params[:id])
   end
 
 end
