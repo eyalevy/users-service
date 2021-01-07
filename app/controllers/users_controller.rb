@@ -19,12 +19,6 @@ class UsersController < ApplicationController
     render :json => User.all
   end
 
-  def sign_in
-    render :json => User.all
-  end
-
-  def sign_out
-    render :json => User.all
   def set_user
     user_id = params.fetch(:id)
     @user = User.find(params[:id])
