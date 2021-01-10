@@ -21,6 +21,8 @@ class AuthController < ApplicationController
     render :json => "logged out"
   end
 
+  private
+
   def check_auth
     if (@user.token != cookies["token"])
       render :json => "unauthorized", :status => :unauthorized
