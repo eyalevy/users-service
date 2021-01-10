@@ -23,6 +23,8 @@ class UsersController < ApplicationController
     render :json => @user.as_json(:except => [:password,:token])
   end
 
+  private
+  
   def check_auth
     if (@user.token != cookies["token"])
       render :json => "unauthorized" , :status => :unauthorized
