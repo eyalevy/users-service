@@ -6,11 +6,11 @@ class UsersController < ApplicationController
   before_action :check_auth, only: %w[get update]
 
   def index
-    render :json => User.all
+    render :json => User.all.as_json(:except => [:password,:token])
   end
 
   def get
-    render :json => @user unless not @user.errors
+    render :json => @user.as_json(:except => [:password,:token]) unless not @user.errors
   end
 
   def create
